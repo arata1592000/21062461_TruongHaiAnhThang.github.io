@@ -74,7 +74,7 @@
         }
 
         function KiemTraPassWord() {
-            var re = /(?-.*\d).{6,}/;
+            var re = /(?=.*\d).{6,}/;
             if (re.test(document.getElementById('txtMK').value.trim()) == false) {
                 mk.innerText = "* Phải có chữ, số, ít nhất 6 ký tự";
                 return false;
@@ -95,14 +95,14 @@
         }
 
         function KiemTraNgaySinh() {
-            var ns = Date(document.getElementById('txtNS').value);
+            var ns = new Date(document.getElementById('txtNS').value);
             var today = new Date();
             if (eval(today.getFullYear() - ns.getFullYear()) <= 10) {
                 ngaysinh.innerText = "Tuổi phải lớn hơn 10";
                 return false;
             } else {
                 ngaysinh.innerText = "";
-                true;
+                return true;
             }
         }
 
@@ -130,7 +130,9 @@
         </div>
         <div>
             <label for="txtMK" class="title">Mật khẩu:</label>
-            <input type="text" name="txtmk" id="txtMK" onblur="return KiemTraPassword();" size="30" placeholder="txtMK">
+            <script>
+            </script>
+            <input type="text" name="txtmk" id="txtMK" onblur="return KiemTraPassWord();" size="30" placeholder="txtMK">
             <span id="mk">*</span>
         </div>
         <div>
